@@ -1,9 +1,8 @@
 import { Router } from "express";
-import SignUpAuthMiddleware from "../middlewares/signUpMiddle";
-import  SignUpController  from "../controllers/signUpController.js";
-
+import { signUpMiddleware } from "../middlewares/signUpMiddle.js";
+import { signUpController } from "../controllers/signUpController.js";
 const SignUpRoutes = Router();
 
-SignUpRoutes.post('/cadastro', SignUpAuthMiddleware, SignUpController);
+SignUpRoutes.post('/cadastro', signUpMiddleware, signUpController);
 
 export default SignUpRoutes;

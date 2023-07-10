@@ -1,9 +1,8 @@
-import { addTransaction } from "../repository/transactionRepository";
+import { addTransaction } from "../repository/transactionRepository.js";
 
 export async function addTransationController(req, res){
     const { valor, descricao } = req.body;
     const { tipo } = req.params; 
-    const userId = localStorage.getItem("id");
 
     const transaction = addTransaction( valor, descricao, tipo, userId ); 
     if(!transaction){

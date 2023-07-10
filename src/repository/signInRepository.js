@@ -8,9 +8,10 @@ export async function userExists(email){
     }
 }
 
-export async function sendToken(token, userId){
-    localStorage.setItem("token", token);
-    localStorage.setItem("id", userId);
+export async function sendToken(token, userId, res){
+    const session = { token, userId };
+
+    res.locals.session = session;
     try{
         return await db.collection("sessao").insertOne({ token, userId });
         

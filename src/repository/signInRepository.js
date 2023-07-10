@@ -9,10 +9,11 @@ export async function userExists(email){
 }
 
 export async function sendToken(token, userId){
+    localStorage.setItem("token", token);
+    localStorage.setItem("id", userId);
     try{
-        console.log("sendtoken", token)
-        console.log("id", userId)
         return await db.collection("sessao").insertOne({ token, userId });
+        
     } catch (e) {
         return console.log(e.message);
     }

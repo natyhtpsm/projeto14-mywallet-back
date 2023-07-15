@@ -1,6 +1,5 @@
 import { db } from "../connection/dbConnection.js";
 
-// cria uma operaçao com valor, descriçao, tipo de operaçao e o id do usuario
 export async function addTransaction(valor, descricao, tipo, userId){
     try{
         return await db.collection("operacao").insertOne({ valor, descricao, tipo, userId });
@@ -9,7 +8,6 @@ export async function addTransaction(valor, descricao, tipo, userId){
     }
 }
 
-// lista as operaçoes com o id do usuário
 export async function getTransaction(userId){
     try{
         return await db.collection("operacao").find({ userId }).toArray();
